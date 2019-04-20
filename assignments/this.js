@@ -54,32 +54,36 @@ whoAmI('BruhMoment');
 
 console.log('---------- Implicit Biding ----------');
 
-const knight = {
-  grit: 20,
-  strength: 10,
-  attack: 'The knight charges ahead and swings his mighty sword',
-  defend: 'The knight takes up a defensive position brings up his shield',
-  action(input) {
-    if (input.toLowerCase() === 'attack') {
-      console.log(
-        `${this.attack} and deals ${dice(0, knight.strength)} damage!`
-      );
-      console.log(this);
-    } else if (input.toLowerCase() === 'defend') {
-      console.log(
-        `${this.defend} and stops ${dice(0, knight.grit)} incoming damage!`
-      );
-      console.log(this);
-    } else {
-      console.log(err);
-    }
+class Knight {
+  constructor(name) {
+    this.name = name;
+    this.grit = 20;
+    this.strength = 13;
+    this.attack = `${name} charges ahead and swings his mighty sword`;
+    this.defend = `${name} takes up a defensive position brings up his shield`;
+    this.action = function(input) {
+      if (input.toLowerCase() === 'attack') {
+        console.log(
+          `${this.attack} and deals ${dice(0, this.strength)} damage!`
+        );
+        console.log(this);
+      } else if (input.toLowerCase() === 'defend') {
+        console.log(
+          `${this.defend} and stops ${dice(0, this.grit)} incoming damage!`
+        );
+        console.log(this);
+      } else {
+        console.log(err);
+      }
+    };
   }
-};
+}
 
-knight.action('attack');
-knight.action('defend');
-knight.action('aTtAcK');
-knight.action('defen d');
+const Tim = new Knight('Tim');
+Tim.action('attack');
+Tim.action('defend');
+Tim.action('aTtAcK');
+Tim.action('defen d');
 
 // Principle 3
 
@@ -87,18 +91,20 @@ knight.action('defen d');
 
 console.log('---------- New Binding ----------');
 
-function Player(name, character, weapon) {
-  this.name = name;
-  this.character = character;
-  this.weapon = weapon;
-  this.speak = function() {
-    console.log(
-      `Welcome ${this.name} the ${randomPraise()} ${
-        this.character
-      } I see you've come equipped with a ${randomPraise()} ${this.weapon}`
-    );
-    console.log(this);
-  };
+class Player {
+  constructor(name, character, weapon) {
+    this.name = name;
+    this.character = character;
+    this.weapon = weapon;
+    this.speak = function() {
+      console.log(
+        `Welcome ${this.name} the ${randomPraise()} ${
+          this.character
+        } I see you've come equipped with a ${randomPraise()} ${this.weapon}`
+      );
+      console.log(this);
+    };
+  }
 }
 
 const Thomas = new Player('Thomas', 'Shaman', 'Mace');
