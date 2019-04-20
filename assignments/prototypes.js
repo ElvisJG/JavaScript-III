@@ -41,8 +41,35 @@
 
 // Test you work by un-commenting these 3 objects and the list of console logs below:
 
-Function Humanoid(team, weapons, language) {
+function GameObject(gameAttrs) {
+  this.createdAt = gameAttrs.createdAt;
+  this.name = gameAttrs.name;
+  this.dimensions = gameAttrs.dimensions;
+}
 
+GameObject.prototype.destroy = () => {
+  return `${this.name} was removed from the game.`;
+};
+
+function CharacterStats(statsAttrs) {
+  this.healthPoints = statsAttrs.healthPoints;
+  GameObject.call(this, statsAttrs);
+}
+
+CharacterStats.prototype.takeDamage = () => {
+  return `${this.name} took damage`;
+};
+
+function Humanoid(humanAttrs) {
+  this.team = humanAttrs.team;
+  this.weapons = humanAttrs.weapons;
+  this.language = humanAttrs.language;
+  GameObject.call(this, humanAttrs);
+  CharacterStats.call(this, humanAttrs);
+}
+
+Humanoid.prototype.greet = () => {
+  return `${this.name} offers a greeting in ${this.language}`;
 };
 
 const mage = new Humanoid({
