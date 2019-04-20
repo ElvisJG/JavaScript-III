@@ -14,19 +14,24 @@ function dice(min, max) {
 }
 
 var praise = {
-  1: 'Mighty'
-  2 == 'Wonderful';
-  3 == 'Magical';
-  4 == 'Ancient';
-  5 == 'Godly';
-  6 == 'Beautiful';
-  7 == 'Illustrious';
-  8 == 'Incredible';
-  9 == 'Magnificent';
-  10 == 'Hilarious';
+  1: 'Mighty',
+  2: 'Wonderful',
+  3: 'Magical',
+  4: 'Ancient',
+  5: 'Godly',
+  6: 'Beautiful',
+  7: 'Illustrious',
+  8: 'Incredible',
+  9: 'Magnificent',
+  10: 'Hilarious'
 };
 
-function randomPraise
+let randomPraise = function() {
+  //   return praise[Math.floor(Math.random() * 10) + 1];
+  return praise[dice(1, 10)];
+};
+
+console.log(randomPraise());
 
 const err = 'Improper INPUT!';
 
@@ -70,9 +75,9 @@ function Player(name, character, weapon) {
   this.character = character;
   this.weapon = weapon;
   this.speak = function() {
-    console.log(`Welcome ${this.name} the ${randomPraise} ${this.character}`);
+    console.log(`Welcome ${this.name} the ${randomPraise()} ${this.character}`);
     console.log(
-      `I see you've come equipped with a ${randomPraise} ${this.weapon}`
+      `I see you've come equipped with a ${randomPraise()} ${this.weapon}`
     );
     console.log(this);
   };
