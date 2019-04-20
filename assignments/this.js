@@ -31,8 +31,6 @@ let randomPraise = function() {
   return praise[dice(1, 10)];
 };
 
-console.log(randomPraise());
-
 const err = 'Improper INPUT!';
 
 // Principle 1
@@ -75,9 +73,10 @@ function Player(name, character, weapon) {
   this.character = character;
   this.weapon = weapon;
   this.speak = function() {
-    console.log(`Welcome ${this.name} the ${randomPraise()} ${this.character}`);
     console.log(
-      `I see you've come equipped with a ${randomPraise()} ${this.weapon}`
+      `Welcome ${this.name} the ${randomPraise()} ${
+        this.character
+      } I see you've come equipped with a ${randomPraise()} ${this.weapon}`
     );
     console.log(this);
   };
@@ -85,6 +84,9 @@ function Player(name, character, weapon) {
 
 const jerry = new Player('Jerry', 'Shaman', 'Mace');
 jerry.speak();
+
+const walter = new Player('Walter', 'Warrior', 'Sword');
+walter.speak();
 
 // Principle 4
 
