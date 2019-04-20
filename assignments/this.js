@@ -2,9 +2,9 @@
  * in your own words. explain the four principle for the "this" keyword below.
  *
  * 1. Allows you to reuse functions/objects
- * 2.
- * 3.
- * 4.
+ * 2. Allows you to pass dynamic variables to those objects
+ * 3. Allows for you to use "constructors"
+ * 4. Allows you to use .apply & .call
  *
  * write out a code example of each explanation above
  */
@@ -96,7 +96,7 @@ class Player {
     this.name = name;
     this.character = character;
     this.weapon = weapon;
-    this.speak = function() {
+    this.intro = function() {
       console.log(
         `Welcome ${this.name} the ${randomPraise()} ${
           this.character
@@ -108,10 +108,10 @@ class Player {
 }
 
 const Thomas = new Player('Thomas', 'Shaman', 'Mace');
-Thomas.speak();
+Thomas.intro();
 
-const walter = new Player('Walter', 'Warrior', 'Sword');
-walter.speak();
+const Walter = new Player('Walter', 'Warrior', 'Sword');
+Walter.intro();
 
 // Principle 4
 
@@ -119,8 +119,8 @@ walter.speak();
 
 console.log('---------- Explicit Biding ----------');
 
-Thomas.speak.call(walter);
-walter.speak.apply(Thomas);
+Thomas.intro.call(Walter);
+Walter.intro.apply(Thomas);
 
-walter.speak();
-Thomas.speak();
+Walter.intro();
+Thomas.intro();
